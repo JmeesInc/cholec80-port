@@ -1,0 +1,59 @@
+[project]
+name = "tool-seg"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=4.4.1",
+    "opencv-python",
+    "pandas>=2.3.3",
+    "polars>=1.35.1",
+    "pycocotools>=2.0.10",
+    "timm>=1.0.22",
+    "typer>=0.20.0",
+    "pre-commit",
+    "torch>=2",
+    "torchvision",
+    "einops",
+    "huggingface_hub",
+    "imageio",
+    "numpy<2",
+    "fastapi",
+    "unicorn",
+    "requests",
+    "typer",
+    "pillow",
+    "omegaconf",
+    "moviepy",
+    "plyfile",
+    "safetensors",
+    "uvicorn",
+    "moviepy==1.0.3",
+    "typer>=0.9.0",
+    "ipykernel>=7.1.0",
+    "scikit-image>=0.25.2",
+    "segmentation-models-pytorch>=0.5.0",
+    "albumentations>=2.0.8",
+    "schedulefree>=1.4.1",
+    "ultralytics>=8.3.241",
+    "scikit-learn>=1.8.0",
+    "av>=16.0.1",
+    "transformers>=4.57.3",
+    "torchmetrics>=1.8.2",
+    "jupyter>=1.1.1",
+    "kaggle>=1.8.3",
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "torch-cu118" },
+]
+torchvision = [
+    { index = "torch-cu118" },
+]
+
+[[tool.uv.index]]
+name = "torch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true

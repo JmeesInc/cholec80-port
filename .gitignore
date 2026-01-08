@@ -1,0 +1,72 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode settings
+.vscode/
+
+# Pytest cache
+.pytest_cache/
+
+# mypy 
+.mypy_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.cache/
+nosetests.xml
+coverage.xml
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# logs
+*.log
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+*.cover
+*.py,cover
+
+# Mac
+.DS_Store
+
+# machine learning
+*.pth
+*.zip
+
+# OS/Editor swap/backup files
+*.swp
+*.swo
+*~
+\#*\#
+
+# Local configs
+.env
+.env.*
+
+# Jupyter runtime
+.jupyter/
+
+# custom directoroes
+cholec80-port-dataset/
+output_train_all/
