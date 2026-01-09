@@ -44,7 +44,7 @@
 
 # How to use
 ## 0. Environment Setup
-```bash
+```bash:bash
 uv venv
 uv sync
 source .venv/bin/activate
@@ -52,7 +52,7 @@ source .venv/bin/activate
 
 ## 1. Download our dataset 
 Download our dataset and cleaned annotations from: https://www.kaggle.com/datasets/shunsukekikuchi/cholec80-port
-```bash
+```bash:bash
 kaggle datasets download shunsukekikuchi/cholec80-port
 unzip cholec80-port.zip
 ```
@@ -60,14 +60,14 @@ unzip cholec80-port.zip
 ## 2. Download Original dataset and preprocessing
 #### Cholec80-port
 Please download cholec80 here: https://camma.unistra.fr/datasets/
-```bash
+```bash:bash
 tar -xvzf cholec80.tar.gz
 python cholec80-port/cholec80_frame_sample.py --cholec80-dir PATH_TO_CHOLEC80_DATASET (default: cholec80)
 ```
 
 #### GynSurg - cleansed
 Please Download Gynsurg Auxiliary Tool Dataset here: https://ftp.itec.aau.at/datasets/GynSurge/
-```bash
+```bash:bash
 unzip GynSurg_Auxiliary_Tool_Dataset.zip
 python GynSurg_cleaned/create_hole.py
 cp -r GynSurg_Auxiliary_Tool_Dataset/tool GynSurg_cleaned/input
@@ -76,7 +76,7 @@ rsync -av --ignore-existing GynSurg_Auxiliary_Tool_Dataset/tool_mask/ GynSurg_cl
 
 #### m2caiSeg_cleaned
 Please Donwload m2caiSeg Dataset here: https://www.kaggle.com/datasets/salmanmaq/m2caiseg
-```bash
+```bash:bash
 unzip m2caiseg.zip
 cp -r 'm2caiSeg dataset/test/images' m2caiSeg_cleaned/test_new/images
 cp -r 'm2caiSeg dataset/train/images' m2caiSeg_cleaned/train_new/images
@@ -85,25 +85,25 @@ cp -r 'm2caiSeg dataset/train/images' m2caiSeg_cleaned/train_new/images
 ## 3. Training
 
 #### Cholec80-port
-```bash
+```bash:bash
 cd cholec80-port-src
 python train_unet.py
 ```
 
 #### GynSurg
-```bash
+```bash:bash
 cd GynSurg
 python train_unet.py
 ```
 
 #### m2caiSeg_cleaned
-```bash
+```bash:bash
 cd m2caiSeg
 python train_unet.py
 ```
 
 ## 4. Evaluation
-```bash
+```bash:bash
 cd cholec80-port-src
 python eval_semseg_models.py
 cd GynSurg
@@ -115,21 +115,21 @@ python eval_semseg_models.py
 
 # Pretrained weights
 you can use our pre-trained, open-source port segmentation model by the following:
-```bash
+```bash:bash
 # download weights
 wget https://github.com/JmeesInc/cholec80-port/releases/download/v1.0.0/convnext_base-unet-allport.pt
 wget https://github.com/JmeesInc/cholec80-port/releases/download/v1.0.0/convnext_base-unet-cholec80_port.pt
 ```
-```python
+```python:python
 # define model and load weight
 import torch
 import segmentation_models_pytorch as smp
-model = smp.Unet("tu-convnext_base")
+model = smp.Unet("tu-convnext_base", activation='sigmoid')
 weights = torch.load("convnext_base-unet-cholec80_port.pt")
 model.load_state_dict(weights)
 
 with torch.inference_mode():
-    output = model(image).sigmoid()
+    output = model(image)
 ```
 
 
