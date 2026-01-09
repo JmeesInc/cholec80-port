@@ -1,6 +1,6 @@
 # Cholec80-port: A Geometrically Consistent Trocar Port Segmentation Dataset for Robust Surgical Scene Understanding
 
-**Cholec80-port** is a new, high-fidelity port segmentation dataset derived from the Cholec80 dataset. It addresses the limitations of existing datasets (m2caiSeg and GynSurg) by establishing a rigorous Standard Operating Procedure (SOP) for annotation that prioritizes geometric fidelity. This dataset is critical for tasks such as Visual SLAM (vSLAM), image stitching, and 3D reconstruction in laparoscopic surgery.
+**Cholec80-port** is a new, high-fidelity port segmentation dataset derived from the Cholec80 dataset. It addresses the limitations of existing datasets (m2caiSeg and GynSurg) by establishing a rigorous Standard Operating Procedure (SOP) for annotation that prioritizes geometric fidelity.
 
 ![Figure 1](docs/Figure_cleaned.png)
 *Figure 1. Examples of erroneous (m2caiSeg: top, GynSurg: middle) and cleaned annotations. Original frames are on the left, with corresponding blue overlays on the cetner and right.*
@@ -25,20 +25,22 @@
 
 ### Before Cleaning (Original Datasets)
 
-| Trained Data | m2caiSeg (test, cleaned) <br> Dice / F1 | GynSurg (VIDEO09, 10) <br> Dice / F1 | Ours (video11-20) <br> Dice / F1 |
-| :--- | :--- | :--- | :--- |
-| **m2caiSeg (trainval)** | 0.0203 / 0.0588 | 0.0091 / 0.0263 | 0.2128 / 0.2949 |
-| **GynSurg (VIDEO01-08)** | 0.0031 / 0.0588 | 0.6651 / 0.8484 | 0.1090 / 0.5638 |
-| **Ours (video01-video08)** | 0.0296 / 0.0588 | 0.3546 / 0.5714 | 0.8616 / 0.8556 |
+| Trained Data | m2caiSeg || GynSurg  || choec80-port ||
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+||  Dice | F1 |  Dice | F1 |  Dice | F1 |
+| **m2caiSeg (trainval)**            | 0.0271 ± 0.1532 | 0.0588 | 0.0091 ± 0.0423 | 0.0263 | 0.2128 ± 0.0769 | 0.2949 |
+| **GynSurg (VIDEO01-08)**           | 0.0031 ± 0.0012 | 0.0588 | 0.6651 ± 0.3534 | 0.8484 | 0.1090 ± 0.0477 | 0.5638 |
+| **choec80-port (video01-video08)** | 0.0296 ± 0.1676 | 0.0588 | 0.3546 ± 0.4029 | 0.5714 | 0.8616 ± 0.1216 | 0.8556 |
 
 ### After Cleaning (Proposed Method)
 
-| Trained Data | m2caiSeg (test) <br> Dice / F1 | GynSurg (VIDEO09, 10) <br> Dice / F1 | Ours (test) <br> Dice / F1 |
-| :--- | :--- | :--- | :--- |
-| **m2caiSeg (train)** | 0.4477 / 0.6667 | 0.0029 / 0.0294 | 0.2485 / 0.2949 |
-| **GynSurg (VIDEO01-08)** | 0.3274 / 0.6667 | 0.8800 / 0.8529 | 0.3258 / 0.6053 |
-| **Ours (train)** | 0.4876 / 0.6667 | 0.6110 / 0.5588 | 0.8616 / 0.8556 |
-| **Combined (All Cleaned)** | **0.7218** / **1.0000** | 0.8185 / 0.8235 | 0.8127 / 0.8698 |
+| Trained Data | m2caiSeg || GynSurg || choec80-port ||
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+||  Dice | F1 |  Dice | F1 |  Dice | F1 |
+| **m2caiSeg (train)**     | 0.4477 ± 0.4477 | 0.6667 | 0.0029 ± 0.0027 | 0.0294 | 0.2485 ± 0.3785 | 0.2949 |
+| **GynSurg (VIDEO01-08)** | 0.3274 ± 0.3274 | 0.6667 | 0.8800 ± 0.0920 | 0.8529 | 0.3258 ± 0.3789 | 0.6053 |
+| **choec80-port (train)** | 0.4876 ± 0.4876 | 0.6667 | 0.6110 ± 0.0637 | 0.5588 | 0.8616 ± 0.1216 | 0.8556 |
+| **Combined (All Cleaned)** | 0.7218 ± 0.2610| 1.0000 | 0.8185 ± 0.0840 | 0.8235 | 0.8127 ± 0.3057 | 0.8698 |
 
 *Note: Dice = Dice Score (GT>0), F1 = Detect F1 Score.*
 
