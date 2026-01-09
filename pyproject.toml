@@ -1,5 +1,5 @@
 [project]
-name = "tool-seg"
+name = "port-seg"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
