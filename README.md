@@ -19,7 +19,7 @@
 | **Video Availability** | no | no | yes |
 
 ![Annotation Example](docs/cholec80-port_annot.png)
-*Example of Cholec80-port annotation.*
+*Figure 2. Example of Cholec80-port annotation.*
 
 ## Results
 
