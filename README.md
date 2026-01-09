@@ -114,6 +114,23 @@ python eval_semseg_models.py
 
 
 # Pretrained weights
+you can use our pre-trained, open-source port segmentation model by the following:
+```bash
+# download weights
+wget https://github.com/JmeesInc/cholec80-port/releases/download/v1.0.0/convnext_base-unet-allport.pt
+wget https://github.com/JmeesInc/cholec80-port/releases/download/v1.0.0/convnext_base-unet-cholec80_port.pt
+```
+```python
+# define model and load weight
+import torch
+import segmentation_models_pytorch as smp
+model = smp.Unet("tu-convnext_base")
+weights = torch.load("convnext_base-unet-cholec80_port.pt")
+model.load_state_dict(weights)
+
+with torch.inference_mode():
+    output = model(image).sigmoid()
+```
 
 
 # Acknowledgement
