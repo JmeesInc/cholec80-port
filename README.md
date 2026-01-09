@@ -114,20 +114,7 @@ python eval_semseg_models.py
 
 
 # Pretrained weights
-```bash
-# combined dataset
-wget https://github.com/JmeesInc/cholec80-port/releases/download/v1.0.0/convnext_base-unet-allport.pt
-# Cholec80-port
-wget https://github.com/JmeesInc/cholec80-port/releases/download/v1.0.0/convnext_base-unet-cholec80_port.pt
-```
-```python
-import torch
-import segmentation_models_pytorch as smp
 
-model = smp.Unet("tu-convnext_base", num_classes=1)
-weight = torch.load("convnext_base-unet-allport.pt")
-model.load_state_dict(weight)
-```
 
 # Acknowledgement
 Thanks to these great repositories: [segmentation-models-pytorch](https://github.com/qubvel-org/segmentation_models.pytorch), [GynSurg](https://github.com/Sahar-Nasiri/GynSurg)
